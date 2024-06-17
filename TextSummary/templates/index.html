@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Summarizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Text Summarizer</h1>
+        <form id="textForm">
+            <textarea id="textInput" rows="10" placeholder="Enter text to summarize..."></textarea>
+            <button type="submit"><i class="fas fa-sync-alt"></i> Summarize</button>
+        </form>
+        <div id="result" class="hidden">
+            <h2>Original Text</h2>
+            <p id="originalText"></p>
+            <p id="originalWordCount"></p>
+
+            <h2>Summarized Text</h2>
+            <p id="summaryText"></p>
+            <p id="summaryWordCount"></p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 KAILASHKIRADU. All rights reserved.</p>
+    </footer>
+
+    <script>
+        $(document).ready(function(){
+            $('#textForm').on('submit', function(e){
+                e.preventDefault();
+                $.ajax({
+                    url: '/',
+                    type: 'POST',
+                    data: { text: $('#textInput').val() },
+                    success: function(response){
+                        $('#originalText').text($('#textInput').val());
+                        $('#summaryText').text(response.summary);
+                        $('#originalWordCount').text('Original word count: ' + response.original_word_count);
+                        $('#summaryWordCount').text('Summarized word count: ' + response.summary_word_count);
+                        $('#result').removeClass('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
