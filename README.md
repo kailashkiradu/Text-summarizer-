@@ -18,18 +18,6 @@ This project is a web application that summarizes text using natural language pr
 
 ## Project structure
 
-text-summarizer/
-├── app.py
-├── TextSummarizer.py
-├── templates/
-│   └── index.html
-├── static/
-│   └── styles.css
-├── requirements.txt
-├── README.md
-
-## Files
-
 app.py
 This is the main Flask application file. It handles the web requests and integrates with the TextSummarizer.py to generate summaries.
 
