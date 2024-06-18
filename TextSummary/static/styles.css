@@ -76,6 +76,24 @@ footer {
     width: 100%;
 }
 
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer i {
+    margin-right: 5px;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
